@@ -1,0 +1,189 @@
+{% extends "index.html" %}
+
+{% block content %}
+
+<div class="shop-layout">
+
+
+    <!-- MINI ALWAYS VISIBLE SIDEBAR -->
+
+    <div class="mini-sidebar">
+
+
+        <button id="categoryBtn">
+
+            <svg xmlns="http://www.w3.org/2000/svg"
+                 width="22"
+                 height="22"
+                 fill="currentColor"
+                 viewBox="0 0 16 16">
+
+                <path d="M1 2.5A.5.5 0 0 1 1.5 2h5a.5.5 0 0 1 .5.5v5a.5.5 0 0 1-.5.5h-5A.5.5 0 0 1 1 7.5zM9 2.5a.5.5 0 0 1 .5-.5h5a.5.5 0 0 1 .5.5v5a.5.5 0 0 1-.5.5h-5a.5.5 0 0 1-.5-.5z"/>
+            </svg>
+
+        </button>
+
+        <button>
+
+            🔍
+
+        </button>
+
+
+    </div>
+
+
+
+
+
+    <!-- EXPAND CATEGORY SIDEBAR -->
+
+
+    <div class="category-sidebar" id="categorySidebar">
+
+
+        <h2>
+            Product Categories
+        </h2>
+
+
+
+        <a href="{% url 'category' %}">
+            All Products
+        </a>
+
+
+
+        {% for c in all_codes %}
+
+
+        <a href="{% url 'hello' c.code %}">
+            {{c.name}}
+        </a>
+
+
+        {% endfor %}
+
+    </div>
+
+    <!-- PRODUCT SECTION -->
+
+
+    <div class="product-area">
+
+
+        {% for p in products %}
+
+
+
+        <div class="product-card">
+
+
+            <img src="{{p.product_image.url}}"
+                 alt="{{p.product_name}}">
+
+
+            <h3>
+                {{p.product_name}}
+            </h3>
+
+
+
+            <p>
+                {{p.pro_discr1}}
+            </p>
+
+
+
+            <div class="price-box">
+
+
+                <span class="current">
+                    ${{p.current_price}}
+                </span>
+
+
+                <del>
+                    ${{p.old_price}}
+                </del>
+
+
+            </div>
+
+
+
+
+
+            <div class="card-buttons">
+
+
+                <a href="{% url 'hi' p.id %}">
+
+
+                    🛒
+
+
+                </a>
+
+
+
+                <a href="{% url 'single_product' p.id %}">
+
+
+                    <button>
+                        See More
+                    </button>
+
+
+                </a>
+
+
+            </div>
+
+
+
+        </div>
+
+
+
+        {% endfor %}
+
+
+
+
+
+    </div>
+
+
+
+
+
+
+</div>
+
+
+
+
+
+<script>
+
+
+const categoryBtn = document.getElementById("categoryBtn");
+
+
+const categorySidebar = document.getElementById("categorySidebar");
+
+
+
+categoryBtn.addEventListener("click",()=>{
+
+    categorySidebar.classList.toggle("open");
+
+
+});
+
+
+
+</script>
+
+{% endblock content %}

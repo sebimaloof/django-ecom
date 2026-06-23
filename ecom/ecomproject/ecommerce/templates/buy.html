@@ -1,0 +1,337 @@
+{% extends "index.html" %}
+
+{% block content %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+       body{
+    margin:0;
+    padding:0;
+    font-family:Arial, sans-serif;
+    background:#f5f5f5;
+    }
+
+.navbar{
+    background:#f3d632;
+    padding:10px 15px;
+    position:sticky;
+    top:0;
+    z-index:1000;
+}
+
+/* Main Layout */
+.content{
+    max-width:1200px;
+    margin:auto;
+    padding:20px;
+    display:flex;
+    gap:30px;
+    align-items:flex-start;
+    box-sizing:border-box;
+}
+
+/* User Details */
+.user_dete{
+    flex: 1;
+    background: #fff8c6;
+    padding: 20px;
+    border-radius: 12px;
+    border-left: 5px solid #f1c40f;
+    box-sizing: border-box;
+    margin-top: 73px;
+    position: sticky;
+    top: 75px;
+}
+
+.user_dete h2{
+    margin-top:0;
+}
+
+.user_dete p{
+    margin:10px 0;
+    word-break:break-word;
+}
+
+.user_dete a{
+    display:inline-block;
+    margin-top:10px;
+    padding:8px 15px;
+    background:#f3d632;
+    color:black;
+    text-decoration:none;
+    border-radius:6px;
+}
+
+/* Product Section */
+.buy_product{
+    flex: 2;
+    margin-top: 75px;
+    background: white;
+    padding: 20px;
+    border-radius: 12px;
+    box-sizing: border-box;
+}
+
+.buy_product h2{
+    margin-top:0;
+}
+
+.cart-item{
+    display:flex;
+    align-items:center;
+    gap:15px;
+    padding:12px;
+    margin-bottom:12px;
+    border:1px solid #eee;
+    border-radius:10px;
+    background:#fafafa;
+}
+
+.cart-img{
+    width:90px;
+    height:90px;
+    object-fit:contain;
+    flex-shrink:0;
+}
+
+.cart-info{
+    flex:1;
+}
+
+.cart-info h3{
+    margin:0 0 5px;
+    font-size:18px;
+}
+
+.cart-info p{
+    margin:4px 0;
+}
+
+
+.order-summary{
+    margin-top: 25px;
+    padding: 20px;
+    background: #fff;
+    border-radius: 12px;
+    border: 1px solid #e5e7eb;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+}
+
+.summary-row{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 0;
+    font-size: 16px;
+    color: #555;
+}
+
+.total-row{
+    margin-top: 10px;
+    padding-top: 15px;
+    border-top: 2px solid #eee;
+    font-size: 22px;
+    font-weight: 700;
+    color: #111;
+}
+
+.total-row span:last-child{
+    color: #0d0f0d;
+}
+
+
+/* Tablet */
+@media (max-width:768px){
+
+    .content{
+        flex-direction:column;
+        gap:20px;
+        padding:15px;
+    }
+
+    .user_dete,
+    .buy_product{
+        width:100%;
+    }
+    .user_dete{
+        position:static;
+    }
+    .cart-item{
+        gap:10px;
+    }
+
+    .cart-img{
+        width:70px;
+        height:70px;
+    }
+
+    .cart-info h3{
+        font-size:16px;
+    }
+}
+
+/* Small Mobile */
+@media (max-width:480px){
+
+    .content{
+        padding:10px;
+    }
+
+  
+
+    .cart-img{
+        width:80px;
+        height:80px;
+        margin:0;
+    }
+
+    .cart-info h3{
+        font-size:15px;
+    }
+
+    .user_dete,
+    .buy_product{
+        padding:15px;
+    }
+}
+    </style>
+</head>
+
+<body>
+    <div class="sear-nav">
+        <div class="nav">
+            <div class="none-menu">
+                <div class="menu-svg" onclick=" menu() ">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor"
+                        class="bi bi-list" viewBox="0 0 16 16">
+                        <path fill-rule="evenodd"
+                            d="M2.5 12a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5m0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5m0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5" />
+                    </svg>
+                </div>
+            </div>
+
+            <div class="fix">
+
+                <div class="nav-left">
+
+                    <div class="logo"><a href=""><svg class="logo-desktop" version="1.1" x="0px" y="0px" width="125px"
+                                height="30px" viewBox="0 0 175.748 42.52" enable-background="new 0 0 175.748 42.52">
+                                <ellipse class="ellipse-bg" fill-rule="evenodd" clip-rule="evenodd" fill="#FDD700"
+                                    cx="170.05" cy="36.341" rx="5.32" ry="5.367"></ellipse>
+                                <path fill-rule="evenodd" clip-rule="evenodd" fill="#333E48"
+                                    d="M30.514,0.71c-0.034,0.003-0.066,0.008-0.056,0.056 C30.263,0.995,29.876,1.181,29.79,1.5c-0.148,0.548,0,1.568,0,2.427v36.459c0.265,0.221,0.506,0.465,0.725,0.734h6.187 c0.2-0.25,0.423-0.477,0.669-0.678V1.387C37.124,1.185,36.9,0.959,36.701,0.71H30.514z M117.517,12.731 c-0.232-0.189-0.439-0.64-0.781-0.734c-0.754-0.209-2.039,0-3.121,0h-3.176V4.435c-0.232-0.189-0.439-0.639-0.781-0.733 c-0.719-0.2-1.969,0-3.01,0h-3.01c-0.238,0.273-0.625,0.431-0.725,0.847c-0.203,0.852,0,2.399,0,3.725 c0,1.393,0.045,2.748-0.055,3.725h-6.41c-0.184,0.237-0.629,0.434-0.725,0.791c-0.178,0.654,0,1.813,0,2.765v2.766 c0.232,0.188,0.439,0.64,0.779,0.733c0.777,0.216,2.109,0,3.234,0c1.154,0,2.291-0.045,3.176,0.057v21.277 c0.232,0.189,0.439,0.639,0.781,0.734c0.719,0.199,1.969,0,3.01,0h3.01c1.008-0.451,0.725-1.889,0.725-3.443 c-0.002-6.164-0.047-12.867,0.055-18.625h6.299c0.182-0.236,0.627-0.434,0.725-0.79c0.176-0.653,0-1.813,0-2.765V12.731z M135.851,18.262c0.201-0.746,0-2.029,0-3.104v-3.104c-0.287-0.245-0.434-0.637-0.781-0.733c-0.824-0.229-1.992-0.044-2.898,0 c-2.158,0.104-4.506,0.675-5.74,1.411c-0.146-0.362-0.451-0.853-0.893-0.96c-0.693-0.169-1.859,0-2.842,0h-2.842 c-0.258,0.319-0.625,0.42-0.725,0.79c-0.223,0.82,0,2.338,0,3.443c0,8.109-0.002,16.635,0,24.381 c0.232,0.189,0.439,0.639,0.779,0.734c0.707,0.195,1.93,0,2.955,0h3.01c0.918-0.463,0.725-1.352,0.725-2.822V36.21 c-0.002-3.902-0.242-9.117,0-12.473c0.297-4.142,3.836-4.877,8.527-4.686C135.312,18.816,135.757,18.606,135.851,18.262z M14.796,11.376c-5.472,0.262-9.443,3.178-11.76,7.056c-2.435,4.075-2.789,10.62-0.501,15.126c2.043,4.023,5.91,7.115,10.701,7.9 c6.051,0.992,10.992-1.219,14.324-3.838c-0.687-1.1-1.419-2.664-2.118-3.951c-0.398-0.734-0.652-1.486-1.616-1.467 c-1.942,0.787-4.272,2.262-7.134,2.145c-3.791-0.154-6.659-1.842-7.524-4.91h19.452c0.146-2.793,0.22-5.338-0.279-7.563 C26.961,15.728,22.503,11.008,14.796,11.376z M9,23.284c0.921-2.508,3.033-4.514,6.298-4.627c3.083-0.107,4.994,1.976,5.685,4.627 C17.119,23.38,12.865,23.38,9,23.284z M52.418,11.376c-5.551,0.266-9.395,3.142-11.76,7.056 c-2.476,4.097-2.829,10.493-0.557,15.069c1.997,4.021,5.895,7.156,10.646,7.957c6.068,1.023,11-1.227,14.379-3.781 c-0.479-0.896-0.875-1.742-1.393-2.709c-0.312-0.582-1.024-2.234-1.561-2.539c-0.912-0.52-1.428,0.135-2.23,0.508 c-0.564,0.262-1.223,0.523-1.672,0.676c-4.768,1.621-10.372,0.268-11.537-4.176h19.451c0.668-5.443-0.419-9.953-2.73-13.037 C61.197,13.388,57.774,11.12,52.418,11.376z M46.622,23.343c0.708-2.553,3.161-4.578,6.242-4.686 c3.08-0.107,5.08,1.953,5.686,4.686H46.622z M160.371,15.497c-2.455-2.453-6.143-4.291-10.869-4.064 c-2.268,0.109-4.297,0.65-6.02,1.524c-1.719,0.873-3.092,1.957-4.234,3.217c-2.287,2.519-4.164,6.004-3.902,11.007 c0.248,4.736,1.979,7.813,4.627,10.326c2.568,2.439,6.148,4.254,10.867,4.064c4.457-0.18,7.889-2.115,10.199-4.684 c2.469-2.746,4.012-5.971,3.959-11.063C164.949,21.134,162.732,17.854,160.371,15.497z M149.558,33.952 c-3.246-0.221-5.701-2.615-6.41-5.418c-0.174-0.689-0.26-1.25-0.4-2.166c-0.035-0.234,0.072-0.523-0.045-0.77 c0.682-3.698,2.912-6.257,6.799-6.547c2.543-0.189,4.258,0.735,5.52,1.863c1.322,1.182,2.303,2.715,2.451,4.967 C157.789,30.669,154.185,34.267,149.558,33.952z M88.812,29.55c-1.232,2.363-2.9,4.307-6.13,4.402 c-4.729,0.141-8.038-3.16-8.025-7.563c0.004-1.412,0.324-2.65,0.947-3.726c1.197-2.061,3.507-3.688,6.633-3.612 c3.222,0.079,4.966,1.708,6.632,3.668c1.328-1.059,2.529-1.948,3.9-2.99c0.416-0.315,1.076-0.688,1.227-1.072 c0.404-1.031-0.365-1.502-0.891-2.088c-2.543-2.835-6.66-5.377-11.704-5.137c-6.02,0.288-10.218,3.697-12.484,7.846 c-1.293,2.365-1.951,5.158-1.729,8.408c0.209,3.053,1.191,5.496,2.619,7.508c2.842,4.004,7.385,6.973,13.656,6.377 c5.976-0.568,9.574-3.936,11.816-8.354c-0.141-0.271-0.221-0.604-0.336-0.902C92.929,31.364,90.843,30.485,88.812,29.55z">
+                                </path>
+                            </svg></a>
+                    </div>
+                    <div class="list">
+                        <ul>
+                            <li><a href="{% url 'home' %}">Home</a></li>
+                            <li><a href="{% url 'abouts' %}">About</a></li>
+                            <li> <a href="{% url 'category' %}">Products</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="nav-right">
+                    
+                    <form method="GET" class="inpu">{% comment %} action="{% url 'search_redirect' %}" {% endcomment %}
+                        <input type="text" name="q" placeholder="Search..." value="{{ request.GET.q }}" >
+                        <button type="submit" class ="search-sam"><svg class="inpu-svg" onclick="Search()" version="1.1"
+                                xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 61 64">
+                                <path
+                                    d="M16.64 2.24c5.888-2.56 12.672-2.88 18.816-0.96 6.016 1.92 11.2 6.080 14.592 11.392 3.648 5.568 5.12 12.48 4.224 19.072-0.64 5.312-2.944 10.368-6.336 14.464 4.288 4.416 8.64 8.768 12.864 13.184-1.408 1.536-3.072 2.944-4.288 4.608h-0.32c-0.064-0.448-0.576-0.64-0.768-0.96-4.096-4.16-8.128-8.32-12.16-12.416-4.672 3.456-10.496 5.376-16.384 5.312-6.080-0.064-12.096-2.368-16.768-6.208-6.272-5.184-9.984-13.184-10.112-21.312v-0.832c0.064-4.736 1.344-9.536 3.712-13.632 2.88-5.184 7.488-9.408 12.928-11.712M26.048 3.328c-8.448 0.384-16.32 5.696-20.096 13.184-2.816 5.504-3.456 12.096-1.856 18.112 1.472 5.44 4.864 10.304 9.472 13.632 3.84 2.752 8.576 4.288 13.312 4.352 5.056 0.128 10.112-1.472 14.208-4.48 3.776-2.688 6.72-6.464 8.384-10.752 2.432-5.888 2.432-12.8 0.064-18.752-1.92-4.864-5.504-9.088-9.984-11.84-4.032-2.496-8.832-3.712-13.504-3.456z">
+                                </path>
+                            </svg></button>
+                    </form>
+
+
+                    
+                    <div class="cart"><a href="{% url 'cart' %}"><svg xmlns="http://www.w3.org/2000/svg" width="22"
+                                height="22" fill="currentColor" class="bi bi-cart4" viewBox="0 0 16 16">
+                                <path
+                                    d="M0 2.5A.5.5 0 0 1 .5 2H2a.5.5 0 0 1 .485.379L2.89 4H14.5a.5.5 0 0 1 .485.621l-1.5 6A.5.5 0 0 1 13 11H4a.5.5 0 0 1-.485-.379L1.61 3H.5a.5.5 0 0 1-.5-.5M3.14 5l.5 2H5V5zM6 5v2h2V5zm3 0v2h2V5zm3 0v2h1.36l.5-2zm1.11 3H12v2h.61zM11 8H9v2h2zM8 8H6v2h2zM5 8H3.89l.5 2H5zm0 5a1 1 0 1 0 0 2 1 1 0 0 0 0-2m-2 1a2 2 0 1 1 4 0 2 2 0 0 1-4 0m9-1a1 1 0 1 0 0 2 1 1 0 0 0 0-2m-2 1a2 2 0 1 1 4 0 2 2 0 0 1-4 0" />
+                            </svg></a></div>
+
+
+                    <!-- dropdown -->
+                    
+
+                    <div class="dropdown">
+                        <a class="profile" data-bs-toggle="dropdown" aria-expanded="false">
+                            <svg version="1.1" xmlns="http://www.w3.org/2000/svg" width="22" height="22"
+                                viewBox="0 0 59 64">
+                                <path fill="currentColor"
+                                    d="M28.224 0h2.496c4.544 0.256 9.088 1.984 12.48 5.056 5.568 4.928 8.256 13.056 6.336 20.288-1.216 4.864-4.416 9.024-8.384 12.032 6.4 2.944 12.16 7.744 15.040 14.272 1.728 3.712 2.56 7.744 2.88 11.776v0.576h-5.888c-0.064-5.568-2.112-11.2-5.824-15.36-4.864-5.568-12.416-8.576-19.776-7.872-7.296 0.576-14.144 4.864-18.176 11.008-2.368 3.584-3.328 7.936-3.52 12.224h-5.888v-0.64c0.384-4.032 1.216-8 2.88-11.712 2.88-6.528 8.64-11.328 15.040-14.272-6.144-4.16-9.536-11.776-8.832-19.072 0.704-9.728 9.472-17.792 19.136-18.304M26.304 6.208c-5.44 0.96-9.92 5.376-11.136 10.752-1.92 7.040 2.56 15.168 9.6 17.216 6.848 2.24 14.976-1.024 18.176-7.552 2.88-5.696 1.216-13.056-3.648-17.216-3.456-3.136-8.448-4.16-12.992-3.2z">
+                                </path>
+                            </svg>
+                        </a>
+
+                        <ul class="dropdown-menu dropdown-menu-end">
+                            <li><a class="dropdown-item" href="{% url 'profile' %}">Profile</a></li>
+                            <li><a class="dropdown-item" href="{% url 'logout' %}">Logout</a></li>
+                        </ul>
+                    </div>
+
+
+
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+    
+
+        <div class="content">
+            <div class="user_dete">
+                <h2>User Details</h2>
+                <p><strong>Name:</strong> {{ pro.user.username }}</p>
+                <p><strong>Email:</strong> {{ pro.user.email }}</p>
+                <p><strong>Address:</strong> {{ pro.adress }}</p>
+                <p><strong>Location:</strong> {{ pro.location }}</p>
+                <p><strong>Mobile:</strong> {{ pro.mobile_number }}</p>
+                <p><strong>Birth Date:</strong> {{ pro.birth_date }}</p>
+
+                 <a href="{% url 'profile' %}">edit</a>
+            </div>
+            <div class="buy_product">
+                <h2>Buy product</h2>
+
+                {% for item in cart_items %}
+                    <div class="cart-item">
+                        <img src="{{ item.item.product.product_image.url }}" alt="" class="cart-img">
+
+                        <div class="cart-info">
+                            <h3>{{ item.item.product.product_name }}</h3>
+                            <p>Quantity: <strong>{{ item.item.quantity }}</strong></p>
+                            <p>Price: ₹{{ item.subtotal }}</p>
+                        </div>
+                    </div>
+                {% endfor %}
+
+            <div class="order-summary">
+                <div class="summary-row">
+                    <span>Total Items</span>
+                    <span>{{ cart_items|length }}</span>
+                </div>
+
+                <div class="summary-row total-row">
+                    <span>Grand Total</span>
+                    <span>₹{{ total_price }}</span>
+                </div>
+            </div>            
+
+        </div>
+            
+    </div>
+        
+
+</body>
+
+</html>
+
+{% endblock content %}

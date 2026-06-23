@@ -1,0 +1,313 @@
+
+.user_det {
+    width:100%;
+    max-width:700px;
+    margin:auto;
+    padding:20px;
+    font-family:Arial,sans-serif;
+}
+
+
+.user-cen {
+
+    margin-top:120px;
+    background:#f9f9f9;
+    border-radius:15px;
+    box-shadow: 0 4px 15px rgba(0,0,0,.1);
+    padding:35px 30px;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+}
+
+
+/* heading */
+
+.user_head {
+
+    font-size:26px;
+  font-weight:700;
+    text-transform:capitalize;
+    margin-bottom:25px;
+}
+
+/* top profile */
+
+.user_top {
+
+    width:100%;
+    display:flex;
+    align-items:center;
+    gap:25px;
+    padding-bottom:20px;
+    border-bottom:1px solid #ddd;
+}
+
+
+.user_img img {
+
+    width:130px;
+    height:130px;
+    border-radius:50%;
+    object-fit:cover;
+    border:3px solid #007bff;
+}
+
+.user_name p {
+
+    font-size:24px;
+    font-weight:bold;
+    color:#333;
+}
+
+/* information */
+
+
+.user_bottom {
+
+    width:100%;
+    margin-top:20px;
+
+}
+
+
+.profile-row {
+
+    display:grid;
+    grid-template-columns:30% 70%;
+    gap:15px;
+    margin-bottom:15px;
+}
+
+.profile-label,
+.profile-value {
+
+    padding:12px;
+    border-radius:8px;
+    background:#fff;
+    border:1px solid #ddd;
+    box-sizing: border-box;
+}
+
+.profile-label {
+
+    font-weight:600;
+}
+
+
+/* buttons */
+
+
+.buttons {
+
+    width:100%;
+    display:flex;
+    justify-content:center;
+    gap:20px;
+    flex-wrap:wrap;
+}
+
+.buttons button {
+
+    margin-top:20px;
+    padding:12px 25px;
+    border:none;
+    border-radius:8px;
+    color:white;
+    font-size:15px;
+    cursor:pointer;
+
+}
+
+
+.edit_btn button {
+
+    background:#007bff;
+}
+
+
+.edit_btn button:hover {
+
+    background:#0056b3;
+}
+
+.login_btn button {
+
+    background:#db1010;
+}
+
+.login_btn button:hover {
+
+    background:#951515;
+}
+
+
+/* ================= EDIT PROFILE ================= */
+
+.userprofile_edit {
+    max-width:600px;
+    margin:auto;
+    padding:20px;
+
+}
+
+.userpro_cen {
+
+    margin-top:100px;
+    background:#f9f9f9;
+    padding:40px 30px;
+    border-radius:15px;
+    box-shadow:0 4px 10px rgba(0,0,0,.1);
+}
+
+.profile-form .form-group {
+
+    margin-bottom:18px;
+}
+
+.profile-form label {
+
+    display:block;
+    margin-bottom:6px;
+    font-weight:bold;
+}
+
+
+.profile-form input,
+.profile-form textarea {
+
+    width:100%;
+    padding:12px;
+    border:1px solid #ccc;
+    border-radius:8px;
+ box-sizing:border-box;
+
+}
+
+
+.profile-form textarea {
+
+    min-height:100px;
+    resize:none;
+}
+
+
+.profile-form .username {
+
+    background:#eee;
+    padding:12px;
+    border-radius:8px;
+
+}
+
+.save-btn {
+
+    background:#007bff;
+    color:white;
+    padding:12px 25px;
+    border:none;
+    border-radius:8px;
+    cursor:pointer;
+}
+
+
+.save-btn:hover {
+
+    background:#0056b3;
+}
+
+
+/* ================= TABLET ================= */
+
+
+@media(max-width:768px){
+
+.user-cen {
+
+    margin-top:90px;
+    padding:30px 10px;
+}
+
+.user_top {
+
+    flex-direction:column;
+    text-align:center;
+}
+
+
+.user_name p {
+
+    font-size:20px;
+}
+
+
+.profile-row {
+
+    grid-template-columns:1fr;
+    gap:8px;
+}
+
+
+.profile-label,
+.profile-value {
+
+    width:100%;
+}
+
+
+.buttons {
+
+    flex-direction:column;
+    align-items:center;
+
+}
+
+
+.buttons a {
+
+    width:100%;
+}
+
+.buttons button {
+    width:100%;
+}
+
+}
+
+
+/* ================= SMALL MOBILE ================= */
+
+
+@media(max-width:450px){
+
+.user_det {
+    padding:10px;
+}
+
+.user_head {
+
+    font-size:22px;
+}
+
+
+.user_img img {
+
+    width:100px;
+    height:100px;
+}
+
+
+.user_name p {
+    font-size:18px;
+}
+
+.profile-label,
+.profile-value {
+    font-size:14px;
+}
+
+.userpro_cen {
+    padding:25px 15px;
+}
+
+}

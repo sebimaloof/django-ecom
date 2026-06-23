@@ -1,0 +1,64 @@
+{% extends "index.html" %}
+
+
+{% block content %}
+<div class="user_det">
+
+    <div class="user-cen">
+        <div class="user_head">
+            <p>user profile</p>
+        </div>
+        <div class="user_top">
+            <div class="user_img">
+                {% if profile.user_image %}
+                <img src="{{ profile.user_image.url }}" alt="Profile Image" width="150"><br>
+                {% endif %}
+
+            </div>
+            <div class="user_name">
+                <p>{{ request.user.username }}</p>
+
+            </div>
+
+        </div>
+        <div class="user_bottom">
+            <div class="profile-row">
+                <div class="profile-label">Birth Date:</div>
+                <div class="profile-value">{{ profile.birth_date }}</div>
+            </div>
+
+            <div class="profile-row">
+                <div class="profile-label">Phone:</div>
+                <div class="profile-value">{{ profile.mobile_number }}</div>
+            </div>
+
+            <div class="profile-row">
+                <div class="profile-label">Location:</div>
+                <div class="profile-value">{{ profile.location }}</div>
+            </div>
+
+            <div class="profile-row">
+                <div class="profile-label">Address:</div>
+                <div class="profile-value">{{ profile.adress }}</div>
+            </div>
+
+        </div>
+
+
+
+
+        <div class="buttons">
+            <div class="edit_btn">
+                <a href="{% url 'userprofile_edit' %}"><button>Edit Profile</button></a>
+            </div>
+            <div class="login_btn">
+                <a href="{% url 'login' %}"><button>log in with another account</button></a>
+
+            </div>
+        </div>
+
+
+    </div>
+
+</div>
+{% endblock content %}

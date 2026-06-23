@@ -1,0 +1,41 @@
+{% extends 'index.html' %}
+{% block title %}Edit Profile{% endblock title %}
+
+{% block content %}
+
+
+<div class="userprofile_edit">
+    <div class="userpro_cen">
+        <form action="" method="post" class="profile-form">
+            {% csrf_token %}
+
+            <div class="form-group">
+                <label>Username:</label>
+                <p class="username">{{ request.user.username }}</p>
+            </div>
+
+            <div class="form-group">
+                <label for="mobile_number">Mobile:</label>
+                <input type="text" name="mobile_number" value="{{ profile.mobile_number }}">
+            </div>
+
+            <div class="form-group">
+                <label for="adress">Address:</label>
+                <textarea name="adress">{{ profile.adress }}</textarea>
+            </div>
+
+            <div class="form-group">
+                <label for="location">Location:</label>
+                <input type="text" name="location" value="{{ profile.location }}">
+            </div>
+
+            <div class="form-group">
+                <label for="date">Birth Date:</label>
+                <input type="date" name="date" value="{{ profile.birth_date|date:'Y-m-d' }}">
+            </div>
+
+            <button type="submit" class="save-btn">Save</button>
+        </form>
+    </div>
+</div>
+{% endblock content %}
